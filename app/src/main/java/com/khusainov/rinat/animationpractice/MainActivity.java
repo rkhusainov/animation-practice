@@ -15,12 +15,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         handleClick(R.id.animation_drawable, AnimationDrawableActivity.class);
-        handleClick(R.id.animation_drawable, ViewAnimationsActivity.class);
-        handleClick(R.id.animation_drawable, ValueAnimationsActivity.class);
-        handleClick(R.id.animation_drawable, ObjectAnimationsActivity.class);
-        handleClick(R.id.animation_drawable, CustomViewAnimationsActivity.class);
+        handleClick(R.id.view_animations, ViewAnimationsActivity.class);
+        handleClick(R.id.value_animations, ValueAnimationsActivity.class);
+        handleClick(R.id.object_animations, ObjectAnimationsActivity.class);
+        handleClick(R.id.custom_view_animations, CustomViewAnimationsActivity.class);
     }
 
     private void handleClick(@IdRes int viewId, final Class<? extends Activity> activityClass) {
