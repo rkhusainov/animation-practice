@@ -12,34 +12,34 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:text="animation drawable" />
+        android:text="@string/animation_drawable" />
 
     <Button
         android:id="@+id/view_animations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:text="view animations" />
+        android:text="@string/view_animations" />
 
     <Button
         android:id="@+id/value_animations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:text="value animations" />
+        android:text="@string/value_animations" />
 
     <Button
         android:id="@+id/object_animations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:text="object animations" />
+        android:text="@string/object_animations" />
 
     <Button
         android:id="@+id/custom_view_animations"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/margin_default"
-        android:text="custom view animations" />
+        android:text="@string/custom_view_animations" />
 
 </LinearLayout>

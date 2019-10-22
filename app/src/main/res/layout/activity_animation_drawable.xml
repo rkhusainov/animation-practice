@@ -6,8 +6,9 @@
 
     <ImageView
         android:id="@+id/image_view_horse"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:src="@drawable/horse" />
 
 </FrameLayout>

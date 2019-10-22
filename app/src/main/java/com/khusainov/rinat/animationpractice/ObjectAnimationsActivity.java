@@ -10,11 +10,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ObjectAnimationsActivity extends AppCompatActivity {
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.activity_object_animations);
 
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_object_animations);
 
         ImageView imageView = findViewById(R.id.imageView);
 
@@ -24,6 +25,7 @@ public class ObjectAnimationsActivity extends AppCompatActivity {
         configure(scaleXAnimator).start();
         configure(scaleYAnimator).start();
     }
+
 
     private Animator configure(ObjectAnimator animator) {
         animator.setDuration(1000);

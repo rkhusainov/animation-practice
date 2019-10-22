@@ -23,7 +23,6 @@ public class FinanceProgressView extends View {
     public static final float START_ANGLE = -90f;
     public static final int MAX_ANGLE = 360;
 
-
     private int mProgress;
     private int mBackCircleColor;
     private int mColor;

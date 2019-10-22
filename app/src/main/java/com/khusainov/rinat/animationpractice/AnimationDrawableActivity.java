@@ -10,9 +10,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AnimationDrawableActivity extends AppCompatActivity {
+
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_animation_drawable);
 
         final ImageView imageView = findViewById(R.id.image_view_horse);
@@ -23,6 +25,5 @@ public class AnimationDrawableActivity extends AppCompatActivity {
                 ((AnimationDrawable)imageView.getDrawable()).start();
             }
         });
-
     }
 }

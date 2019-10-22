@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">AnimationPractice</string>
     <string name="progress_template">%d %%</string>
+    <string name="animation_drawable">animation drawable</string>
+    <string name="view_animations">view animations</string>
+    <string name="value_animations">value animations</string>
+    <string name="object_animations">object animations</string>
+    <string name="custom_view_animations">custom view animations</string>
 </resources>
