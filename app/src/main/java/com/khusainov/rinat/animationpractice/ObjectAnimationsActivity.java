@@ -2,35 +2,71 @@ package com.khusainov.rinat.animationpractice;
 
 import android.animation.Animator;
 import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.os.Bundle;
-import android.os.PersistableBundle;
+import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ObjectAnimationsActivity extends AppCompatActivity {
 
+    private static final boolean VIA_PROPERTY_VALUES_HOLDER = false;
+    private List<Animator> mAnimators = new ArrayList<>();
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_object_animations);
 
         ImageView imageView = findViewById(R.id.imageView);
 
-        ObjectAnimator scaleXAnimator = ObjectAnimator.ofFloat(imageView, "scaleX", 0.5f, 1f);
-        ObjectAnimator scaleYAnimator = ObjectAnimator.ofFloat(imageView, "scaleY", 0.5f, 1f);
+        float translationY = getResources().getDimension(R.dimen.translationY);
+        if (VIA_PROPERTY_VALUES_HOLDER) {
+            PropertyValuesHolder alphaHolder = PropertyValuesHolder.ofFloat(View.TRANSLATION_Y, 0f, translationY);
+            PropertyValuesHolder rotationHolder = PropertyValuesHolder.ofFloat(View.ROTATION, 0f, 360f);
+            ObjectAnimator animator = ObjectAnimator.ofPropertyValuesHolder(imageView, alphaHolder, rotationHolder);
+            configure(animator).setDuration(2000);
+            mAnimators.add(animator);
+        } else {
+            // rotation animator
+            ObjectAnimator rotationAnimator = ObjectAnimator.ofFloat(imageView, "rotation", 0f, 360f);
+            rotationAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+            rotationAnimator.setRepeatMode(ObjectAnimator.REVERSE);
+            rotationAnimator.setDuration(1000);
+            mAnimators.add(rotationAnimator);
 
-        configure(scaleXAnimator).start();
-        configure(scaleYAnimator).start();
+            // translation animator
+            ObjectAnimator translationAnimator = ObjectAnimator.ofFloat(imageView, "translationY", 0f, translationY);
+            translationAnimator.setRepeatCount(ObjectAnimator.INFINITE);
+            translationAnimator.setRepeatMode(ObjectAnimator.REVERSE);
+            translationAnimator.setDuration(1000);
+            mAnimators.add(translationAnimator);
+        }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        for (Animator animator : mAnimators) {
+            animator.start();
+        }
+    }
 
-    private Animator configure(ObjectAnimator animator) {
-        animator.setDuration(1000);
-        animator.setRepeatMode(ObjectAnimator.REVERSE);
+    @Override
+    protected void onStop() {
+        super.onStop();
+        for (Animator animator : mAnimators) {
+            animator.end();
+        }
+    }
+
+    private ObjectAnimator configure(ObjectAnimator animator) {
         animator.setRepeatCount(ObjectAnimator.INFINITE);
+        animator.setRepeatMode(ObjectAnimator.REVERSE);
         return animator;
     }
 }

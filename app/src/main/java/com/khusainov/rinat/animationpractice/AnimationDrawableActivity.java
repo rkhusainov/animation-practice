@@ -2,28 +2,32 @@ package com.khusainov.rinat.animationpractice;
 
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class AnimationDrawableActivity extends AppCompatActivity {
 
+    private AnimationDrawable mDrawable;
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_animation_drawable);
+        ImageView horseImageView = findViewById(R.id.horse_image_view);
+        mDrawable = (AnimationDrawable) horseImageView.getDrawable();
+        horseImageView.post(() -> mDrawable.start());
+    }
 
-        final ImageView imageView = findViewById(R.id.image_view_horse);
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mDrawable.start();
+    }
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ((AnimationDrawable)imageView.getDrawable()).start();
-            }
-        });
+    @Override
+    protected void onStop() {
+        mDrawable.stop();
+        super.onStop();
     }
 }
